@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+    Route::post('data', 'App\Http\Controllers\branchcontroller@details');
+
+    Route::post('bankdata', 'App\Http\Controllers\brankcontroller@details');
+
+    Route::post('bankbanch', 'App\Http\Controllers\branchcontroller@branchdetails');
+
+    Route::post('bankbanchdetails', 'App\Http\Controllers\branchcontroller@bankbranchdetails');
