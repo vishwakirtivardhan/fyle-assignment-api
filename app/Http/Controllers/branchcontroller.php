@@ -32,11 +32,11 @@ class branchcontroller extends Controller
        //return DB::select("SELECT ifsc,bank_id,branch,city,district FROM branches where city=$city ");
        //return  DB::select("SELECT * FROM branches where city=$city ");
       
-
-      return $branchdata=Cache::remember('branchdetails',15, function() use($bank_id){
-        return DB::table('branches')->select('city')->where('bank_id', $bank_id)->groupBy('city')->
-        get();   
-       });
+       return DB::table('branches')->select('city')->where('bank_id', $bank_id)->groupBy('city')->
+       get(); 
+      // return $branchdata=Cache::remember('branchdetails',15, function() use($bank_id){
+          
+      //  });
 
 
     }
