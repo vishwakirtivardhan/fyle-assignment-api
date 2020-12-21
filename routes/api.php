@@ -18,11 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::post('data', 'App\Http\Controllers\branchcontroller@details');
 
-    Route::post('data', 'App\Http\Controllers\branchcontroller@details');
+Route::post('bankdata', 'App\Http\Controllers\brankcontroller@details');
 
-    Route::post('bankdata', 'App\Http\Controllers\brankcontroller@details');
+Route::post('bankbanch', 'App\Http\Controllers\branchcontroller@branchdetails');
 
-    Route::post('bankbanch', 'App\Http\Controllers\branchcontroller@branchdetails');
-
-    Route::post('bankbanchdetails', 'App\Http\Controllers\branchcontroller@bankbranchdetails');
+Route::post('bankbanchdetails', 'App\Http\Controllers\branchcontroller@bankbranchdetails');
