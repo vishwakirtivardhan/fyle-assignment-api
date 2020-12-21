@@ -19,7 +19,7 @@ class branchcontroller extends Controller
         //return DB::select("SELECT ifsc,bank_id,branch,city,district FROM branches where city=$city ");
         //return  DB::select("SELECT * FROM branches where city=$city ");
          
-      return $data=Cache::remember('databank',15, function() use($city){
+      return $data=Cache::remember($city,15, function() use($city){
         return DB::table('branches')->where('city', $city)->get();
          
        });
@@ -32,11 +32,12 @@ class branchcontroller extends Controller
        //return DB::select("SELECT ifsc,bank_id,branch,city,district FROM branches where city=$city ");
        //return  DB::select("SELECT * FROM branches where city=$city ");
       
-       return DB::table('branches')->select('city')->where('bank_id', $bank_id)->groupBy('city')->
+       
+       return $branchdata=Cache::remember('branchdetails'.$bank_id,15, function() use($bank_id){
+       
+        return DB::table('branches')->select('city')->where('bank_id', $bank_id)->orderby('city','asc')->groupBy('city')->
        get(); 
-      // return $branchdata=Cache::remember('branchdetails',15, function() use($bank_id){
-          
-      //  });
+        });
 
 
     }
@@ -48,12 +49,11 @@ class branchcontroller extends Controller
 //die();
         //return DB::select("SELECT ifsc,bank_id,branch,city,district FROM branches where city=$city ");
         //return  DB::select("SELECT * FROM branches where city=$city ");
-       return DB::table('branches')->where('city', $city )->where('bank_id', $bank_id)->get();
+       
 
        
-      return $bankbranchdata=Cache::remember('bankbranchdetails',15, function() use($city,$bank_id){
-        return DB::table('branches')->select('city')->where('bank_id', $bank_id)->groupBy('city')->
-        get();   
+      return $bankbranchdata=Cache::remember($city.$bank_id,15, function() use($city,$bank_id){
+        return DB::table('branches')->where('city', $city )->where('bank_id', $bank_id)->orderby('ifsc','asc')->get();   
        });
         
 
