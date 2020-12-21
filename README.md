@@ -17,6 +17,6 @@
 <li><b>For Getting data in From of Table :</b>https://sheltered-chamber-04174.herokuapp.com/api/bankbanchdetails </li>
 
 <hr>
-<h4>Note* This project hosted on heroku and PGSQL used for database. More Than 60%  building time taken by this Heroku Setup and database step on heroku only.
+<h4>Note* This project hosted on heroku and PGSQL used for database. More Than 60%  building time taken by this Heroku and pgsql database step up on heroku only.
 
 </ul>
